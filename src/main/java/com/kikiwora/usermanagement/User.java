@@ -7,7 +7,7 @@ public class User {
 	private Long 	iD;					// User ID
 	private String 	firstName;			// User First Name
 	private String 	lastName;			// User Last Name
-	private Date 	dateOfBirthday;		// User date of birthday
+	private Date 	dateOfBirthday;		// User Date of Birthday
 	
 	public void setID(Long iD) { this.iD = iD; }
 	public Long getID() { return this.iD; }
@@ -30,7 +30,7 @@ public class User {
 	public int getAge() {
 		Date currentDate = new Date();					// Current Date
 		Calendar calendar = Calendar.getInstance();		// Calendar for date difference calculating
-		calendar.setTimeInMillis(currentDate.getTime() - this.dateOfBirthday.getTime());
-		return calendar.get(Calendar.YEAR);
+		calendar.setTimeInMillis(currentDate.getTime() - this.dateOfBirthday.getTime());	// Разница дат, хранящаяся в переменной, записана в формате от 1 Января 1970 года, получаем нужное значение вычитая начальное значение года
+		return (calendar.get(Calendar.YEAR) - 1970);
 	}
 }	

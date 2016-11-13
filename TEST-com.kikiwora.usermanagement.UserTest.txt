@@ -1,9 +1,9 @@
 Testsuite: com.kikiwora.usermanagement.UserTest
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,014 sec
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,02 sec
 
-Testcase: testSetFullName took 0,001 sec
+Testcase: testSetFullName took 0,002 sec
 Testcase: testGetFullName took 0 sec
-Testcase: testGetID took 0 sec
+Testcase: testGetID took 0,001 sec
 Testcase: testGetDateOfBirthday took 0 sec
 Testcase: testGetLastName took 0 sec
 Testcase: testGetFirstName took 0 sec

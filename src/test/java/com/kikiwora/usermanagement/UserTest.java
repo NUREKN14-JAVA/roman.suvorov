@@ -9,11 +9,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class UserTest {
-	private User testUser;
-	private Long testID;
-	private String testFirstName;
-	private String testLastName;
-	private Date testDateOfBirthday;
+	private User testUser;				// Test User Object
+	private Long testID;				// Test User ID
+	private String testFirstName;		// Test User First Name
+	private String testLastName;		// Test User Last Name
+	private Date testDateOfBirthday;	// Test User Date of Birthday
 	
 	@Before
 	public void setUp() throws Exception {
@@ -22,7 +22,7 @@ public class UserTest {
 		testFirstName = "John";
 		testLastName = "Smith";
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(1990, Calendar.DECEMBER, 10);
+		calendar.set(1996, Calendar.DECEMBER, 10);
 		testDateOfBirthday = calendar.getTime();
 	}
 	
@@ -69,8 +69,8 @@ public class UserTest {
 		
 		Date currentDate = new Date();					// Current Date
 		Calendar calendar = Calendar.getInstance();		// Calendar for date difference calculating
-		calendar.setTimeInMillis(currentDate.getTime() - this.testDateOfBirthday.getTime());
-		int testAge = calendar.get(Calendar.YEAR);
+		calendar.setTimeInMillis(currentDate.getTime() - this.testDateOfBirthday.getTime());	// ѕолучаем разницу дат
+		int testAge = (calendar.get(Calendar.YEAR) - 1970);		// –азница дат, хран¤ща¤с¤ в переменной, записана в формате от 1 январ¤ 1970 года, получаем нужное значение вычита¤ начальное значение года
 		assertEquals(testAge, testUser.getAge());
 	}
 }
