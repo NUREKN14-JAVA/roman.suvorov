@@ -1,34 +1,34 @@
-<project name="Usermanagement" basedir="." default="test">
-	<!-- Переменные для сборщика -->
-	<property name="java-dir-main" location="${basedir}/src/main/java"/>
-	<property name="java-dir-test" location="${basedir}/src/test/java"/>
-	<property name="build-dir" location="${basedir}/bin"/>
+<project name="usermanagement" basedir = "." default="test">
+
+	<property name = "main-java-dir" value = "${basedir}/src/main/java"/>
+	<property name = "build-dir" value = "${basedir}/bin"/>
+	<property name = "test-java-dir" value = "${basedir}/src/test/java"/>
 	
-	<!-- Очистка и инициализация папки с исполняемыми файлами -->
+	
 	<target name="clean">
-		<delete dir="${build-dir}"/>
+	<delete dir="${build-dir}"/>
 	</target>
 	
+
 	<target name="init">
-		<mkdir dir="${build-dir}"/>
+	<mkdir dir="${build-dir}"/>
 	</target>
 	
-	<!-- Основные цели сборщика -->
-	<target name="compile" depends="clean, init">
-		<javac includeantruntime="true" srcdir="${java-dir-main}" destdir="${build-dir}"/>
+	<target name="compile" depends="init">
+	<javac srcdir="${main-java-dir}" destdir="${build-dir}"/>
 	</target>
 	
-	<target name="compile-test" depends="compile">
-		<javac includeantruntime="true" srcdir="${java-dir-test}" destdir="${build-dir}"/>
+	<target name="test-compile">
+	<javac srcdir="${test-java-dir}" destdir="${build-dir}"/>
 	</target>
 	
-	<target name="test" depends="compile-test">
-		<junit printsummary="yes" haltonfailure="yes">
-			<classpath>
-				<pathelement location="${build-dir}"/>
-			</classpath>
-			<formatter type="plain"/>
-			<test name="com.kikiwora.usermanagement.UserTest"></test>
-		</junit>
+	<target name="test" depends="test-compile">
+	<junit>
+		<classpath>
+		<pathelement location = "${build-dir}"/>
+		</classpath>
+		<formatter type="plain"/>
+		<test name="com.kikiwora.usermanagement.UserTest"></test>
+	</junit>
 	</target>
 </project>
