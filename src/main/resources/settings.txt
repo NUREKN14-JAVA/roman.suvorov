@@ -1,5 +1,5 @@
 connection.diver=org.hsqldb.jdbcDriver
-connection.url=jdbc:hsqldb:file:C:/Users/LocalAdmin/workspace/usermanagement/db/usermanagement
+connection.url=jdbc:hsqldb:file:db/usermanagement
 connection.user=sa
 connection.password=
 
