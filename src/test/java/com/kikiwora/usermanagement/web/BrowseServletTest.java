@@ -16,6 +16,7 @@ public class BrowseServletTest extends MockServletTestCase {
 		createServlet(EditServlet.class);
 	}
 
+
 	
 	public void testEdit() {
         Date date = new Date();
