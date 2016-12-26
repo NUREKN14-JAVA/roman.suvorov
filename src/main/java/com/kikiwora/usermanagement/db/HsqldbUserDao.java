@@ -21,27 +21,28 @@ class HsqldbUserDao implements UserDao {
 	private static final String FIND_BY_ID = "SELECT id, firstname, lastname, dateofbirth FROM users WHERE id=?";
 	private static final String SELECT_ALL_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users";
 	private static final String INSERT_QUERY = "INSERT INTO users (firstname, lastname, dateofbirth) VALUES(?, ?, ?)";
-	private ConnectionFactory connectionFactory;
+	private ConnectionFactory ConnectionFactory;
 	
 	public HsqldbUserDao(){		
 	};
 	
 	public HsqldbUserDao(ConnectionFactory connectionFactory){
-		this.connectionFactory = connectionFactory;
+		this.ConnectionFactory = connectionFactory;
 	};
 	
 	public ConnectionFactory getConnectionFactory() {
-		return connectionFactory;
+		return ConnectionFactory;
 	}
 
 	public void setConnectionFactory(ConnectionFactory connectionFactory) {
+		ConnectionFactory = connectionFactory;
 		//this.connectionFactory = connectionFactory;
 	}
 
 	@Override
 	public User create(User user) throws DatabaseException {
 		try{
-		Connection connection = connectionFactory.createConnection();
+		Connection connection = ConnectionFactory.createConnection();
 			PreparedStatement statement = connection.prepareStatement(INSERT_QUERY);
 			statement.setString(1, user.getFirstName());		
 			statement.setString(2, user.getLastName());
@@ -70,7 +71,7 @@ class HsqldbUserDao implements UserDao {
 	@Override
 	public void update(User user) throws DatabaseException {
 		try {
-			Connection connection = connectionFactory.createConnection();
+			Connection connection = ConnectionFactory.createConnection();
 			PreparedStatement statement = connection
 					.prepareStatement(UPDATE_QUERY);
 			statement.setString(1, user.getFirstName());
@@ -94,7 +95,7 @@ class HsqldbUserDao implements UserDao {
 	@Override
 	public void delete(User user) throws DatabaseException {
 		try{
-			Connection connection = connectionFactory.createConnection();
+			Connection connection = ConnectionFactory.createConnection();
 			PreparedStatement statement = connection
 					.prepareStatement(DELETE_USER);
 			statement.setLong(1,user.getId());
@@ -118,7 +119,7 @@ class HsqldbUserDao implements UserDao {
 		User user = new User();
 		
 		try {
-			Connection connection = connectionFactory.createConnection();
+			Connection connection = ConnectionFactory.createConnection();
 			PreparedStatement statement = connection
 					.prepareStatement(FIND_BY_ID);
 			statement.setLong(1, id) ;
@@ -149,7 +150,7 @@ class HsqldbUserDao implements UserDao {
 		Collection result = new LinkedList();
 		
 		try {
-			Connection connection = connectionFactory.createConnection();
+			Connection connection = ConnectionFactory.createConnection();
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(SELECT_ALL_QUERY);
 			while (resultSet.next()){
